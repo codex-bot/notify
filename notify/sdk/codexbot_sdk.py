@@ -26,7 +26,7 @@ class CodexBot:
         self.api = API(self.broker, application_name)
 
         self.init_queue()
-        self.api.initialize_plugin(queue_name, host, port)
+        self.api.initialize_app(queue_name, host, port)
 
         self.logging.debug("Initialized")
 

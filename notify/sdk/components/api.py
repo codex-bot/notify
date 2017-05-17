@@ -4,23 +4,23 @@ from ..lib.logging import Logging
 
 class API:
 
-    def __init__(self, broker, plugin_name):
+    def __init__(self, broker, app_name):
 
-        self.plugin_name = plugin_name
+        self.app_name = app_name
         self.broker = broker
         self.logging = Logging()
 
     def send(self, command, payload):
 
-        data = json.dumps({'token': self.plugin_name,
+        data = json.dumps({'token': self.app_name,
                            'command': command,
                            'payload': payload})
         self.broker.send(data)
 
-    def initialize_plugin(self, queue_name, host, port):
+    def initialize_app(self, queue_name, host, port):
 
         payload = {
-            'name': self.plugin_name,
+            'name': self.app_name,
             'queue': queue_name,
             'host': host,
             'port': port
