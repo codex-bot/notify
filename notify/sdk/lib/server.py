@@ -16,7 +16,7 @@ def http_response(function):
 
 class Server:
 
-    def __init__(self, event_loop, host='127.0.0.1', port=1339):
+    def __init__(self, event_loop, host='localhost', port=1339):
         self.event_loop = event_loop
         self.host, self.port = host, port
         self.web_server = aiohttp.web.Application(loop=self.event_loop)

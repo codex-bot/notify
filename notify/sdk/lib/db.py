@@ -2,9 +2,10 @@ import logging
 from pymongo import MongoClient
 
 
-class Db:
+class Db():
+    # TODO: Has to be thread safe
 
-    def __init__(self, dbname, host='127.0.0.1', port=27017):
+    def __init__(self, dbname, host='localhost', port=27017):
         """
         Initialize DB class with host and port.
         :param dbname: Database (DB) name
@@ -46,12 +47,17 @@ class Db:
 
     def insert(self, collection, data):
         """
-
-        :param collection:
-        :param data:
-        :return:
+        Insert data into collection
+        :param collection: collection name
+        :param data: JSON object to insert
+        :return: result object with 'inserted_id' parameter
         """
         return self.db[collection].insert(data)
 
     def remove(self, collection):
+        """
+        Remove collection from db
+        :param collection: collection name
+        :return:
+        """
         return self.db[collection].remove()
