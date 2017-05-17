@@ -2,7 +2,7 @@ import asyncio
 import json
 import logging
 
-from .rabbitmq import send_message_v3, init_receiver_v3
+from notify.sdk.lib.rabbitmq import init_receiver, add_message_to_queue
 
 
 class Broker:
@@ -42,8 +42,11 @@ class Broker:
         except Exception as e:
             logging.error(e)
 
-    def send(self, message, queue_name, host='localhost'):
-        yield from send_message_v3(message, queue_name)
+    def send(self, message, host='localhost'):
+
+        self.event_loop.run_until_complete(add_message_to_queue(
+            message, 'core'
+        ))
 
     def start(self):
-        self.event_loop.run_until_complete(init_receiver_v3(self.callback, self.queue_name))
+        self.event_loop.run_until_complete(init_receiver(self.callback, self.queue_name))

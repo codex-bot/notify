@@ -1,17 +1,18 @@
 import asyncio
 
+from .lib.logging import Logging
 from .components.broker import Broker
-from .components.server import Server
-from .components.logging import Logging
+from .lib.server import Server
+from .components.api import API
 from .config import SERVER
 
 
 class CodexBot:
 
-    def __init__(self, delegated_queue_name):
+    def __init__(self, application_name, queue_name, host, port):
         """
         Initiates SDK
-        :param delegated_queue_name: - name of queue that core deligates to this tool
+        :param queue_name: - name of queue that this tool delegates to core
         """
 
         self.modules = {}
@@ -20,22 +21,24 @@ class CodexBot:
 
         self.event_loop = asyncio.get_event_loop()
 
-        self.broker = self.init_broker(delegated_queue_name)
+        self.broker = self.init_broker(queue_name)
         self.server = self.init_server()
+        self.api = API(self.broker, application_name)
 
         self.init_queue()
+        self.api.initialize_app(queue_name, host, port)
 
         self.logging.debug("Initialized")
 
     def init_queue(self):
-        self.logging.debug("Initiate queue and loop.")
+        self.logging.debug("Initialize queue and loop.")
         self.broker.start()
 
     def init_server(self):
         return Server(self.event_loop, SERVER['host'], SERVER['port'])
 
-    def init_broker(self, delegated_queue_name):
-        return Broker(self, self.event_loop, delegated_queue_name)
+    def init_broker(self, queue_name):
+        return Broker(self, self.event_loop, queue_name)
 
     def log(self, message):
         self.logging.debug(message)
