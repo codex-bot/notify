@@ -2,7 +2,7 @@ import asyncio
 import json
 import logging
 
-from notify.sdk.lib.rabbitmq import init_receiver_v3, add_message_to_queue
+from notify.sdk.lib.rabbitmq import init_receiver, add_message_to_queue
 
 
 class Broker:
@@ -49,4 +49,4 @@ class Broker:
         ))
 
     def start(self):
-        self.event_loop.run_until_complete(init_receiver_v3(self.callback, self.queue_name))
+        self.event_loop.run_until_complete(init_receiver(self.callback, self.queue_name))
