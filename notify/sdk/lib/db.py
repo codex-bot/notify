@@ -2,9 +2,9 @@ import logging
 from pymongo import MongoClient
 
 
-class Db():
+class Db:
 
-    def __init__(self, dbname, host='localhost', port=27017):
+    def __init__(self, dbname, host='127.0.0.1', port=27017):
         """
         Initialize DB class with host and port.
         :param dbname: Database (DB) name

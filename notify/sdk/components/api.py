@@ -12,7 +12,7 @@ class API:
 
     def send(self, command, payload):
 
-        data = json.dumps({'plugin': self.plugin_name,
+        data = json.dumps({'token': self.plugin_name,
                            'command': command,
                            'payload': payload})
         self.broker.send(data)
@@ -20,13 +20,13 @@ class API:
     def initialize_plugin(self, queue_name, host, port):
 
         payload = {
-            'plugin': self.plugin_name,
+            'name': self.plugin_name,
             'queue': queue_name,
             'host': host,
             'port': port
         }
 
-        self.send('initialize plugin', payload)
+        self.send('initialize app', payload)
 
     def commands(self):
         pass

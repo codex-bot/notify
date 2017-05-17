@@ -3,9 +3,8 @@ import aioamqp
 import logging
 import pika
 
-# This file will be copied to every module by bash script during initial setup.
 
-def init_receiver(callback, queue_name, host='localhost'):
+def init_receiver(callback, queue_name, host='127.0.0.1'):
     """
     Initialize receiver for rabbitmq queue.
 
@@ -27,7 +26,7 @@ def init_receiver(callback, queue_name, host='localhost'):
     channel.start_consuming()
 
 
-def send_message(data, queue_name, host='localhost'):
+def send_message(data, queue_name, host='127.0.0.1'):
     """
     Send message to specific queue. Connection will be opened and then closed.
     :param data: Data to send.
@@ -48,7 +47,7 @@ def send_message(data, queue_name, host='localhost'):
 
 
 @asyncio.coroutine
-def init_receiver_v3(callback, queue_name, host='localhost'):
+def init_receiver_v3(callback, queue_name, host='127.0.0.1'):
     transport, protocol = yield from aioamqp.connect()
     channel = yield from protocol.channel()
     yield from channel.queue_declare(queue_name=queue_name, passive=False, auto_delete=True)
@@ -56,7 +55,7 @@ def init_receiver_v3(callback, queue_name, host='localhost'):
 
 
 @asyncio.coroutine
-def send_message_v3(data, queue_name, host='localhost'):
+def add_message_to_queue(data, queue_name, host='127.0.0.1'):
     transport, protocol = yield from aioamqp.connect()
     channel = yield from protocol.channel()
 

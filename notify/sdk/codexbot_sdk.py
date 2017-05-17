@@ -9,7 +9,7 @@ from .config import SERVER
 
 class CodexBot:
 
-    def __init__(self, plugin_name, queue_name, host, port):
+    def __init__(self, application_name, queue_name, host, port):
         """
         Initiates SDK
         :param queue_name: - name of queue that this tool delegates to core
@@ -23,7 +23,7 @@ class CodexBot:
 
         self.broker = self.init_broker(queue_name)
         self.server = self.init_server()
-        self.api = API(self.broker, plugin_name)
+        self.api = API(self.broker, application_name)
 
         self.init_queue()
         self.api.initialize_plugin(queue_name, host, port)
@@ -31,7 +31,7 @@ class CodexBot:
         self.logging.debug("Initialized")
 
     def init_queue(self):
-        self.logging.debug("Initiate queue and loop.")
+        self.logging.debug("Initialize queue and loop.")
         self.broker.start()
 
     def init_server(self):
