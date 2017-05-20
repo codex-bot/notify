@@ -15,6 +15,10 @@ class CodexBot:
         :param queue_name: - name of queue that this tool delegates to core
         """
 
+        if not token:
+            print('Please, pass your app`s token.\nYou can get it from our bot by /newapp command')
+            exit()
+
         # Get event loop
         self.event_loop = asyncio.get_event_loop()
 
@@ -52,4 +56,4 @@ class CodexBot:
         self.server.set_routes(routes)
 
     def register_commands(self, commands):
-        self.broker.api.register_commands(commands)
+        self.event_loop.run_until_complete(self.broker.api.register_commands(commands))
