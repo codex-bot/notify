@@ -3,7 +3,6 @@ import asyncio
 from notify.sdk.lib.db import Db
 from .lib.logging import Logging
 from .components.broker import Broker
-from .components.api import API
 from .lib.server import Server
 from .config import SERVER
 

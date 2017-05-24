@@ -28,7 +28,7 @@ class Notify:
 
         # todo: generate own user-hash and save it in DB
         user_token = payload["chat"]
-        message = "Ссылка для отправки сообщений в данный чат: {}/notifications/{}\n\n" + \
+        message = "Ссылка для отправки сообщений в данный чат: {}/notify/{}\n\n" + \
                   "Сообщение отправляйте в POST параметре message."
 
         await self.sdk.send_to_chat(
