@@ -23,4 +23,4 @@ DB = {
 }
 
 # Token got from App Manager
-APPLICATION_TOKEN = "XXXXXXXXXXXXX"
+APPLICATION_TOKEN = ""
