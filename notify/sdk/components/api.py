@@ -52,5 +52,5 @@ class API:
     def show_message(self, data):
         logging.info(data)
 
-    def service_callback(self, data):
-        self.commands_list[data['command']](data)
+    async def service_callback(self, data):
+        await self.commands_list[data['command']](data)

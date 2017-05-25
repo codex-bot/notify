@@ -44,7 +44,7 @@ class CodexBot:
     def init_db(self, db_config):
         self.logging.debug("Initialize db.")
         db_name = "module_{}".format(self.application_name)
-        return Db(db_name, db_config[0], db_config[1])
+        return Db(db_name, db_config["host"], db_config["port"])
 
     def log(self, message):
         self.logging.debug(message)
@@ -57,3 +57,9 @@ class CodexBot:
 
     def register_commands(self, commands):
         self.event_loop.run_until_complete(self.broker.api.register_commands(commands))
+
+    async def send_to_chat(self, chat_hash, message):
+        await self.broker.api.send('send to service', {
+            "chat_hash": chat_hash,
+            "text": message
+        })

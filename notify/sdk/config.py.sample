@@ -14,3 +14,13 @@ SERVER = {
 RABBITMQ = {
     'host': '127.0.0.1',
 }
+
+# MongoDB
+DB = {
+    'name': 'default',
+    'host': '127.0.0.1',
+    'port': 27017
+}
+
+# Token got from App Manager
+APPLICATION_TOKEN = ""
