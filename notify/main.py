@@ -22,7 +22,7 @@ class Notify:
         ])
 
         self.sdk.set_routes([
-            ('POST', '/notify/{chat_token}', self.notify_route_handler)
+            ('POST', '/notify/{user_token}', self.notify_route_handler)
         ])
 
         self.sdk.start_server()
@@ -49,7 +49,7 @@ class Notify:
     #
 
     @staticmethod
-    def generate_chat_token():
+    def generate_user_token():
         return ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(8))
 
     """
@@ -60,31 +60,31 @@ class Notify:
 
     async def start(self, payload):
 
-        registered_chat = self.sdk.db.find_one(self.CHATS_COLLECTION_NAME, {'user': payload['chat']})
+        registered_chat = self.sdk.db.find_one(self.CHATS_COLLECTION_NAME, {'chat': payload['chat']})
 
         if registered_chat:
-            chat_token = registered_chat['chat']
+            user_token = registered_chat['user']
         else:
-            chat_token = self.generate_chat_token()
+            user_token = self.generate_user_token()
             new_chat = {
-                'user': payload['chat'],
-                'chat': chat_token,
+                'chat': payload['chat'],
+                'user': user_token,
                 'dt_register': time()
             }
             self.sdk.db.insert(self.CHATS_COLLECTION_NAME, new_chat)
-            self.sdk.log("New user registered with token {}".format(chat_token))
+            self.sdk.log("New user registered with token {}".format(user_token))
 
         message = "Адрес для отправки уведомлений в этот чат: {}/notify/{}\n\n" + \
                   "Сообщение отправляйте в POST-параметре «message»"
 
         await self.sdk.send_to_chat(
             payload["chat"],
-            message.format(URL, chat_token)
+            message.format(URL, user_token)
         )
 
     #
     #
-    # Route /notify/{chat_token} handler
+    # Route /notify/{user_token} handler
     #
     #
     @CodexBot.http_response
@@ -94,14 +94,14 @@ class Notify:
             - text
             - post
             - json
-            - params - should contain {chat_token}
+            - params - should contain {user_token}
         :return:
         """
         self.sdk.log('Notification accepted {}'.format(request['text']))
 
         # Check for route-token passed
-        if 'chat_token' not in request['params']:
-            self.sdk.log("Notify route handler: chat_token is missed")
+        if 'user_token' not in request['params']:
+            self.sdk.log("Notify route handler: user_token is missed")
             return {
                 'status': 404
             }
@@ -114,20 +114,20 @@ class Notify:
             }
 
         message = request['post']['message'];
-        chat_token = request['params']['chat_token']
+        user_token = request['params']['user_token']
 
         # Get user data from DB by chat token
-        registered_chat = self.sdk.db.find_one(self.CHATS_COLLECTION_NAME, {'chat': chat_token})
+        registered_chat = self.sdk.db.find_one(self.CHATS_COLLECTION_NAME, {'user': user_token})
 
         # Check if chat was registered
-        if not registered_chat or 'user' not in registered_chat:
-            self.sdk.log("Notify route handler: wrong chat token passed")
+        if not registered_chat or 'chat' not in registered_chat:
+            self.sdk.log("Notify route handler: wrong user token passed")
             return {
                 'status': 404
             }
 
         # Send notification
-        await self.sdk.send_to_chat(registered_chat['user'], message)
+        await self.sdk.send_to_chat(registered_chat['chat'], message)
 
         # Response
         return {
