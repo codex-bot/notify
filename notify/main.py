@@ -116,7 +116,7 @@ class Notify:
         message = request['post']['message'];
         user_token = request['params']['user_token']
 
-        # Get user data from DB by chat token
+        # Get user data from DB by user token
         registered_chat = self.sdk.db.find_one(self.CHATS_COLLECTION_NAME, {'user': user_token})
 
         # Check if chat was registered
