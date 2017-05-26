@@ -69,7 +69,7 @@ class Notify:
             new_chat = {
                 'user': payload['chat'],
                 'chat': chat_token,
-                'date': time()
+                'dt_register': time()
             }
             self.sdk.db.insert(self.CHATS_COLLECTION_NAME, new_chat)
             self.sdk.log("New user registered with token {}".format(chat_token))
