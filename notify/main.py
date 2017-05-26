@@ -90,11 +90,11 @@ class Notify:
     @CodexBot.http_response
     async def notify_route_handler(self, request):
         """
-        :param request: - request data
-        :               - text
-        :               - post
-        :               - json
-        :               - params - should contain {chat_token}
+        :param request: - request data:
+            - text
+            - post
+            - json
+            - params - should contain {chat_token}
         :return:
         """
         self.sdk.log('Notification accepted {}'.format(request['text']))
