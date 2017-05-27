@@ -3,11 +3,14 @@ import asyncio
 from notify.sdk.lib.db import Db
 from .lib.logging import Logging
 from .components.broker import Broker
-from .lib.server import Server
+from .lib.server import Server, http_response
 from .config import SERVER
 
 
 class CodexBot:
+
+    # Make decorator for HTTP callback public
+    http_response = http_response
 
     def __init__(self, application_name, queue_name, host, port, db_config, token):
         """
@@ -63,3 +66,4 @@ class CodexBot:
             "chat_hash": chat_hash,
             "text": message
         })
+
