@@ -3,15 +3,14 @@ import string
 from time import time
 
 from sdk.codexbot_sdk import CodexBot
-from sdk.config import DB, URL
-from config import APPLICATION_TOKEN
+from config import APPLICATION_TOKEN, DB, URL
 
 
 class Notify:
 
     def __init__(self):
 
-        self.sdk = CodexBot('notify', 'notify', 'localhost', '1339', db_config=DB, token=APPLICATION_TOKEN)
+        self.sdk = CodexBot('notify', 'notify', 'localhost', 1339, db_config=DB, token=APPLICATION_TOKEN)
 
         self.sdk.log("Notify module initialized")
         # self.sdk.set_routes([
