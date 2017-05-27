@@ -2,14 +2,16 @@ import random
 import string
 from time import time
 
-from notify.sdk.codexbot_sdk import CodexBot
-from notify.sdk.config import DB, APPLICATION_TOKEN, URL
+from sdk.codexbot_sdk import CodexBot
+from sdk.config import DB, URL
+from config import APPLICATION_TOKEN
+
 
 class Notify:
 
     def __init__(self):
 
-        self.sdk = CodexBot('notifies', 'notifies', 'localhost', '1339', db_config=DB, token=APPLICATION_TOKEN)
+        self.sdk = CodexBot('notify', 'notify', 'localhost', '1339', db_config=DB, token=APPLICATION_TOKEN)
 
         self.sdk.log("Notify module initialized")
         # self.sdk.set_routes([
@@ -134,4 +136,6 @@ class Notify:
             'text': 'OK!'
         }
 
-notify = Notify()
+
+if __name__ == "__main__":
+    notify = Notify()
