@@ -4,6 +4,9 @@
 ##
 URL = ''
 
+# Unique application name in lowercase
+APPLICATION_NAME = ''
+
 # HTTP server settings
 SERVER = {
     'host': '127.0.0.1',
@@ -23,4 +26,4 @@ DB = {
 }
 
 # Token got from App Manager
-APPLICATION_TOKEN = ""
+APPLICATION_TOKEN = ''
