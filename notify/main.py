@@ -10,7 +10,7 @@ class Notify:
 
     def __init__(self):
 
-        self.sdk = CodexBot(APPLICATION_NAME, APPLICATION_NAME, SERVER['host'], SERVER['port'], db_config=DB, token=APPLICATION_TOKEN)
+        self.sdk = CodexBot(APPLICATION_NAME, SERVER['host'], SERVER['port'], db_config=DB, token=APPLICATION_TOKEN)
 
         self.sdk.log("Notify module initialized")
 
