@@ -3,19 +3,16 @@ import string
 from time import time
 
 from sdk.codexbot_sdk import CodexBot
-from config import APPLICATION_TOKEN, DB, URL
+from config import APPLICATION_TOKEN, APPLICATION_NAME, DB, URL, SERVER
 
 
 class Notify:
 
     def __init__(self):
 
-        self.sdk = CodexBot('notify', 'notify', 'localhost', 1339, db_config=DB, token=APPLICATION_TOKEN)
+        self.sdk = CodexBot(APPLICATION_NAME, APPLICATION_NAME, SERVER['host'], SERVER['port'], db_config=DB, token=APPLICATION_TOKEN)
 
         self.sdk.log("Notify module initialized")
-        # self.sdk.set_routes([
-        #     ()
-        # ])
 
         self.sdk.register_commands([
             ('notify_help', 'help', self.help),
@@ -114,7 +111,7 @@ class Notify:
                 'text': "Error: param «message» is missed"
             }
 
-        message = request['post']['message'];
+        message = request['post']['message']
         user_token = request['params']['user_token']
 
         # Get user data from DB by user token

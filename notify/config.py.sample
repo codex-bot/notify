@@ -3,6 +3,7 @@
 # Should use https protocol
 ##
 URL = ''
+APPLICATION_NAME = ""
 
 # HTTP server settings
 SERVER = {
