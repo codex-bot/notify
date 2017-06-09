@@ -33,7 +33,7 @@ class Notify:
 
     async def help(self, payload):
         self.sdk.log("/help handler fired with payload {}".format(payload))
-        await self.sdk.send_to_chat(
+        await self.sdk.send_text_to_chat(
             payload["chat"],
             "Это приложение позволяет отправлять разные уведомления в чат с помощью простых запросов. "
             "И его очень просто интегрировать. \n\n "
@@ -75,7 +75,7 @@ class Notify:
         message = "Адрес для отправки уведомлений в этот чат: {}/notify/{}\n\n" + \
                   "Сообщение отправляйте в POST-параметре «message»"
 
-        await self.sdk.send_to_chat(
+        await self.sdk.send_text_to_chat(
             payload["chat"],
             message.format(URL, user_token)
         )
@@ -125,7 +125,7 @@ class Notify:
             }
 
         # Send notification
-        await self.sdk.send_to_chat(registered_chat['chat'], message)
+        await self.sdk.send_text_to_chat(registered_chat['chat'], message)
 
         # Response
         return {
