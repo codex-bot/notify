@@ -15,6 +15,7 @@ class Notify:
         self.sdk.log("Notify module initialized")
 
         self.sdk.register_commands([
+            ('notify', 'Notify позволит вам отправлять сообщения в чат POST запросом', CommandHelp(self.sdk)),
             ('notify_help', 'help', CommandHelp(self.sdk)),
             ('notify_start', 'start', CommandStart(self.sdk))
         ])
