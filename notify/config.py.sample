@@ -2,7 +2,7 @@
 # Main URL for services callbacks
 # Should use https protocol
 ##
-URL = ''
+URL = 'https://'
 
 # Unique application name in lowercase
 APPLICATION_NAME = ''
