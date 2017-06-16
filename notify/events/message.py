@@ -22,6 +22,7 @@ class EventMessage(EventBase):
             }
 
         message = request['post']['message']
+        parse_mode = request['post'].get('parse_mode', None)
         user_token = request['params']['user_token']
 
         # Get user data from DB by user token
@@ -35,7 +36,7 @@ class EventMessage(EventBase):
             }
 
         # Send notification
-        await self.sdk.send_text_to_chat(registered_chat['chat'], message)
+        await self.sdk.send_text_to_chat(registered_chat['chat'], message, parse_mode)
         return {
             'text': 'OK!'
         }
