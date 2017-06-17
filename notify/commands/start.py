@@ -23,7 +23,7 @@ class CommandStart(CommandBase):
             self.sdk.db.insert(CHATS_COLLECTION_NAME, new_chat)
             self.sdk.log("New user registered with token {}".format(user_token))
 
-        message = "Адрес для отправки уведомлений в этот чат: {}/notify/{}\n\n" + \
+        message = "Адрес для отправки уведомлений в этот чат: {}/u/{}\n\n" + \
                   "Сообщение отправляйте в POST-параметре «message»"
 
         await self.sdk.send_text_to_chat(
