@@ -21,8 +21,7 @@ class Notify:
         ])
 
         self.sdk.set_routes([
-            ('POST', '/u/{user_token}', self.notify_route_handler),
-            ('POST', '/notify/{user_token}', self.notify_route_handler)
+            ('POST', '/u/{user_token}', self.notify_route_handler)
         ])
 
         self.sdk.start_server()
