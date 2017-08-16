@@ -7,7 +7,7 @@ class CommandHelp(CommandBase):
         self.sdk.log("/help handler fired with payload {}".format(payload))
         await self.sdk.send_text_to_chat(
             payload["chat"],
-            "Это приложение позволяет отправлять разные уведомления в чат с помощью простых запросов. "
-            "И его очень просто интегрировать. \n\n "
-            "/notify_start — получить ссылку для передачи сообщений в этот чат"
+            "Send notifications to chat easily "
+            "Very simple to integrate. \n\n "
+            "/notify_start — show webhook for this chat"
         )
