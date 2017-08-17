@@ -20,7 +20,7 @@ curl -X POST https://notify.bot.ifmo.su/u/ABCD1234 -d "message=Hello world"
 
 You'll get message "Hello world" in telegram chat.
 
-![step2](https://user-images.githubusercontent.com/15448200/29415534-07950080-836c-11e7-9d89-f6c3cb11c97b.gif "You'll get message "Hello world" in telegram chat")
+![step2](https://user-images.githubusercontent.com/15448200/29415534-07950080-836c-11e7-9d89-f6c3cb11c97b.gif "You'll get message Hello world in telegram chat")
 
 Good luck!
 ## CodeX Team
