@@ -23,7 +23,7 @@ class CommandStart(CommandBase):
             self.sdk.db.insert(CHATS_COLLECTION_NAME, new_chat)
             self.sdk.log("New user registered with token {}".format(user_token))
 
-        message = "Use this webhook for sending notifications to this chat:\n" \
+        message = "Use this webhook for sending notifications to the chat:\n" \
                   "\n" \
                   "<code>{}/u/{}</code>\n" \
                   "\n" \

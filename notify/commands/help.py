@@ -8,6 +8,6 @@ class CommandHelp(CommandBase):
         await self.sdk.send_text_to_chat(
             payload["chat"],
             "Send notifications to chat easily "
-            "Very simple to integrate. \n\n "
-            "/notify_start — show webhook for this chat"
+            "One step integration. \n\n "
+            "/notify_start — show webhook link for this chat"
         )
