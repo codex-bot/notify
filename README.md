@@ -1,4 +1,4 @@
-# Webhooks plugin for CodeX.Bot platform
+# Webhooks plugin for [@codex_bot](https://ifmo.su/bot) platform
 
 Allows you to send custom messages to Slack or Telegram chat.
 
