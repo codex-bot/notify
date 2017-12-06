@@ -23,12 +23,16 @@ class CommandStart(CommandBase):
             self.sdk.db.insert(CHATS_COLLECTION_NAME, new_chat)
             self.sdk.log("New user registered with token {}".format(user_token))
 
-        message = "Адрес для отправки уведомлений в этот чат: {}/u/{}\n\n" + \
-                  "Сообщение отправляйте в POST-параметре «message»"
+        message = "Use this webhook for sending notifications to the chat:\n" \
+                  "\n" \
+                  "<code>{}/u/{}</code>\n" \
+                  "\n" \
+                  "Make a POST request with text in «message» param."
 
         await self.sdk.send_text_to_chat(
             payload["chat"],
-            message.format(URL, user_token)
+            message.format(URL, user_token),
+            "HTML"
         )
 
     @staticmethod

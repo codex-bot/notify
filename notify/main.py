@@ -15,7 +15,7 @@ class Notify:
         self.sdk.log("Notify module initialized")
 
         self.sdk.register_commands([
-            ('notify', 'Notify позволит вам отправлять сообщения в чат POST запросом', CommandHelp(self.sdk)),
+            ('notify', 'Send notifications to your chat easily.', CommandHelp(self.sdk)),
             ('notify_help', 'help', CommandHelp(self.sdk)),
             ('notify_start', 'start', CommandStart(self.sdk))
         ])
@@ -27,7 +27,7 @@ class Notify:
         self.sdk.start_server()
 
     ##
-    # Route /notify/{user_token} handler
+    # Route /u/{user_token} handler
     ##
     @CodexBot.http_response
     async def notify_route_handler(self, request):
