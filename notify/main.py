@@ -1,12 +1,9 @@
-import asyncio
-
 from sdk.codexbot_sdk import CodexBot
 from config import APPLICATION_TOKEN, APPLICATION_NAME, DB, URL, SERVER
 
 from commands.help import CommandHelp
 from commands.start import CommandStart
 from events.message import EventMessage
-from commands.base import CommandSome
 
 
 class Notify:
