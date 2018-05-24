@@ -15,7 +15,7 @@ class Notify:
         self.sdk.log("Notify module initialized")
 
         self.sdk.register_commands([
-            ('notify', 'Send notifications to your chat easily.', CommandHelp(self.sdk)),
+            ('notify', 'Send notifications to your chat easily.', CommandStart(self.sdk)),
             ('notify_help', 'help', CommandHelp(self.sdk)),
             ('notify_start', 'start', CommandStart(self.sdk))
         ])

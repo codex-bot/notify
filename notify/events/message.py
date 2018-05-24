@@ -23,6 +23,7 @@ class EventMessage(EventBase):
 
         message = request['post']['message']
         parse_mode = request['post'].get('parse_mode', None)
+        disable_web_page_preview = self.__str2bool(request['post'].get('disable_web_page_preview', "false"))
         user_token = request['params']['user_token']
 
         # Get user data from DB by user token
@@ -36,7 +37,11 @@ class EventMessage(EventBase):
             }
 
         # Send notification
-        await self.sdk.send_text_to_chat(registered_chat['chat'], message, parse_mode)
+        await self.sdk.send_text_to_chat(registered_chat['chat'], message, parse_mode, disable_web_page_preview)
         return {
             'text': 'OK!'
         }
+
+    @staticmethod
+    def __str2bool(v):
+        return v.lower() in ("yes", "true", "1")
