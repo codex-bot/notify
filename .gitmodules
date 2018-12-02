@@ -1,3 +1,0 @@
-[submodule "notify/sdk"]
-	path = notify/sdk
-	url = git@github.com:codex-bot/sdk-python.git
