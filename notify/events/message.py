@@ -36,8 +36,10 @@ class EventMessage(EventBase):
                 'status': 404
             }
 
+        self.set_bot(registered_chat)
+
         # Send notification
-        await self.sdk.send_text_to_chat(registered_chat['chat'], message, parse_mode, disable_web_page_preview)
+        await self.send(registered_chat['chat'], message, parse_mode, disable_web_page_preview)
         return {
             'text': 'OK!'
         }

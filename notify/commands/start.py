@@ -20,7 +20,8 @@ class CommandStart(CommandBase):
             new_chat = {
                 'chat': payload['chat'],
                 'user': user_token,
-                'dt_register': time()
+                'dt_register': time(),
+                'bot': self.bot
             }
             self.sdk.db.insert(CHATS_COLLECTION_NAME, new_chat)
             self.sdk.log("New user registered with token {}".format(user_token))
