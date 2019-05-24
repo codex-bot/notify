@@ -5,7 +5,10 @@ class CommandHelp(CommandBase):
 
     async def __call__(self, payload):
         self.sdk.log("/help handler fired with payload {}".format(payload))
-        await self.sdk.send_text_to_chat(
+
+        self.set_bot(payload)
+
+        await self.send(
             payload["chat"],
             "Send notifications to chat easily "
             "One step integration. \n\n "
