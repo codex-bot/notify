@@ -29,7 +29,7 @@ class CommandStart(CommandBase):
                   "\n" \
                   "Make a POST request with text in «message» param."
 
-        await self.sdk.send_text_to_chat(
+        await self.send(
             payload["chat"],
             message.format(URL, user_token),
             "HTML"
