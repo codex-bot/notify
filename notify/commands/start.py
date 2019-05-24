@@ -9,6 +9,8 @@ class CommandStart(CommandBase):
 
     async def __call__(self, payload):
 
+        self.set_bot(payload)
+
         registered_chat = self.sdk.db.find_one(CHATS_COLLECTION_NAME, {'chat': payload['chat']})
 
         if registered_chat:
