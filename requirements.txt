@@ -1,4 +1,4 @@
-aioamqp==0.10.0
+aioamqp==0.14.0
 requests
 aiohttp==2.0.7
   - async-timeout [required: >=1.2.0, installed: 1.2.1]
