@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  mongodb:
+    image: mongo
+    volumes:
+      - ~/mongodb:/data/db
+    ports:
+      - "27017:27017"
+  rabbitmq:
+        image: rabbitmq:3-management-alpine
+        container_name: rabbitmq
+        ports:
+          - 5672:5672
+          - 15672:15672
+  notify:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    command: python main.py
+    volumes:
+      - ./notify:/home/app/

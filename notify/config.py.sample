@@ -15,13 +15,13 @@ SERVER = {
 
 # RabbitMQ server settings
 RABBITMQ = {
-    'host': '127.0.0.1',
+    'host': 'rabbitmq',
 }
 
 # MongoDB
 DB = {
     'name': 'default',
-    'host': '127.0.0.1',
+    'host': 'mongodb',
     'port': 27017
 }
 
