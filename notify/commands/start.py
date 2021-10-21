@@ -9,6 +9,8 @@ class CommandStart(CommandBase):
 
     async def __call__(self, payload):
 
+        self.set_bot(payload)
+
         registered_chat = self.sdk.db.find_one(CHATS_COLLECTION_NAME, {'chat': payload['chat']})
 
         if registered_chat:
@@ -18,7 +20,8 @@ class CommandStart(CommandBase):
             new_chat = {
                 'chat': payload['chat'],
                 'user': user_token,
-                'dt_register': time()
+                'dt_register': time(),
+                'bot': self.bot
             }
             self.sdk.db.insert(CHATS_COLLECTION_NAME, new_chat)
             self.sdk.log("New user registered with token {}".format(user_token))
@@ -29,7 +32,7 @@ class CommandStart(CommandBase):
                   "\n" \
                   "Make a POST request with text in «message» param."
 
-        await self.sdk.send_text_to_chat(
+        await self.send(
             payload["chat"],
             message.format(URL, user_token),
             "HTML"
