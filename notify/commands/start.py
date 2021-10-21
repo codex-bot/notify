@@ -11,7 +11,7 @@ class CommandStart(CommandBase):
 
         self.set_bot(payload)
 
-        registered_chat = self.sdk.db.find_one(CHATS_COLLECTION_NAME, {'chat': payload['chat']})
+        registered_chat = self.sdk.db.find_one(CHATS_COLLECTION_NAME, {'chat': payload['chat'], 'bot': self.bot})
 
         if registered_chat:
             user_token = registered_chat['user']
