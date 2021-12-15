@@ -1,5 +1,5 @@
 from sdk.codexbot_sdk import CodexBot
-from config import APPLICATION_TOKEN, APPLICATION_NAME, DB, URL, SERVER
+from config import APPLICATION_TOKEN, APPLICATION_NAME, DB, URL, SERVER, RABBITMQ
 
 from commands.help import CommandHelp
 from commands.start import CommandStart
@@ -10,7 +10,7 @@ class Notify:
 
     def __init__(self):
 
-        self.sdk = CodexBot(APPLICATION_NAME, SERVER['host'], SERVER['port'], db_config=DB, token=APPLICATION_TOKEN)
+        self.sdk = CodexBot(APPLICATION_NAME, SERVER['host'], SERVER['port'], db_config=DB, rabbitmq_host=RABBITMQ['host'], token=APPLICATION_TOKEN)
 
         self.sdk.log("Notify module initialized")
 
