@@ -18,6 +18,7 @@ pika==0.10.0
 pipdeptree==0.10.1
 pymongo==3.11.4
 pyparsing==2.4.7
+python-dotenv==0.19.2
 pytz==2021.1
 requests==2.25.1
 six==1.16.0
