@@ -1,5 +1,5 @@
 from .base import EventBase
-from config import CHATS_COLLECTION_NAME
+from settings import CHATS_COLLECTION_NAME
 
 class EventMessage(EventBase):
 

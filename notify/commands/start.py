@@ -1,7 +1,7 @@
 import random
 import string
 from time import time
-from config import URL, CHATS_COLLECTION_NAME
+from settings import URL, CHATS_COLLECTION_NAME
 from .base import CommandBase
 
 
