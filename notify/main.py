@@ -12,7 +12,7 @@ class Notify:
 
         self.sdk = CodexBot(APPLICATION_NAME, SERVER['host'], SERVER['port'], db_config=DB, rabbitmq_url=RABBITMQ, token=APPLICATION_TOKEN)
 
-        self.sdk.log("Notify module initialized")
+        self.sdk.log("Notify module initialized: v1.17.1")
 
         self.sdk.register_commands([
             ('notify', 'Send notifications to your chat easily.', CommandStart(self.sdk)),
