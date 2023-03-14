@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), '..', '.env')
 load_dotenv(dotenv_path)
 
+RANDOM_TOKEN_LEN = 12
+
 URL = os.environ.get("URL")
 
 APPLICATION_NAME = os.environ.get("APPLICATION_NAME")
