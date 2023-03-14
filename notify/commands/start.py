@@ -1,7 +1,7 @@
 import random
 import string
 from time import time
-from settings import URL, CHATS_COLLECTION_NAME
+from settings import URL, CHATS_COLLECTION_NAME, RANDOM_TOKEN_LEN
 from .base import CommandBase
 
 
@@ -40,4 +40,4 @@ class CommandStart(CommandBase):
 
     @staticmethod
     def generate_user_token():
-        return ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(8))
+        return ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(RANDOM_TOKEN_LEN))
